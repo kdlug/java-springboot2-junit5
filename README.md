@@ -1,5 +1,37 @@
 # JUnit 5
 
+JUnit 5 = JUnit Platform + JUnit Jupiter + JUnit Vintage.  
+
+- The junit-jupiter-api dependency allows us to write tests and extensions which use JUnit 5.
+- The junit-jupiter-engine dependency allows us to run tests which use JUnit 5.
+- The junit-vintage-engine dependency allows us to run tests which use JUnit 3 or 4.
+
+## Enabling JUnit Platform to run your tests
+
+Starting with version 4.6, Gradle provides native support for executing tests on the JUnit Platform. 
+
+To enable it, you just need to specify useJUnitPlatform() within a test task declaration in
+build.gradle:
+
+```txt
+// build.gradle
+test {
+    useJUnitPlatform()
+    
+    testLogging {
+        // Configure events which will be logged
+        events "passed", "skipped", "failed"
+    }
+}
+```
+
+## Running tests from command line with gradle
+
+```console
+ ./gradlew clean build
+ ./gradlew test
+```
+
 ## JUnit Annotations
 
 | Annotation | Description |
@@ -23,3 +55,8 @@
 ## JUnit test lifecycle
 
 ![JUnit test lifecycle](readme/junit-lifecycle.png?raw=true "JUnit test lifecycle")
+
+## Resources
+
+https://www.baeldung.com/junit-5-gradle  
+https://junit.org/junit5/docs/5.4.0/user-guide/index.pdf

@@ -1,5 +1,6 @@
-package com.github;
+package com.github.junit;
 
+import com.github.junit.junit.Greeting;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;

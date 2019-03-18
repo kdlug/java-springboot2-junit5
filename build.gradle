@@ -1,8 +1,11 @@
 plugins {
-	id 'org.springframework.boot' version '2.1.3.RELEASE'
+	// We need to add the Spring Boot plugin to our build.gradle
+	id 'org.springframework.boot' version '2.0.6.RELEASE'
+	// If we want to generate an executable jar file, then we also need to apply the java plugin
 	id 'java'
 }
 
+// Spring Boot’s plugin will automatically import the spring-boot-dependencies bom from the version of Spring Boot that you are using
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.github'
@@ -16,4 +19,28 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// allows us to write tests and extensions which use JUnit 5
+	testImplementation('org.junit.jupiter:junit-jupiter-api:5.4.0')
+
+	// allows us to run tests which use JUnit 5
+	testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.4.0')
+
+	// allows us to run tests which use JUnit 3 or 4
+	testRuntimeOnly ('org.junit.vintage:junit-vintage-engine:5.4.0')
+	testCompileOnly ('junit:junit:4.12')
+}
+
+test {
+	useJUnitPlatform()
+
+	maxHeapSize = '1G'
+
+	testLogging {
+		// enable logging output
+		// showStandardStreams = true
+
+		// Configure events which will be logged
+		events "passed", "skipped", "failed"
+	}
 }

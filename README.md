@@ -56,6 +56,16 @@ test {
 
 ![JUnit test lifecycle](readme/junit-lifecycle.png?raw=true "JUnit test lifecycle")
 
+## JUnit5 assertions
+
+- JUnit five supports lambdas in assertions
+- Grouped Assertions - all assertions run in block, all failures reported
+- Dependent Assertions - allows for blocks of grouped assertions
+- Excepted exceptions are tested with assertThrows lambda expression
+- Timeouts are tested with assertTime lambda expression
+
+https://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/Assertions.html
+
 ## Resources
 
 https://www.baeldung.com/junit-5-gradle  
